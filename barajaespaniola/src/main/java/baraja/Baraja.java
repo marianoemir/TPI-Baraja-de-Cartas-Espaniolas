@@ -1,11 +1,6 @@
 package baraja;
 
 import java.util.ArrayList;
-
-/**
- *
- * @author Mariano_Chirino
- */
 import java.util.ArrayList;
 import java.util.Collections;
 

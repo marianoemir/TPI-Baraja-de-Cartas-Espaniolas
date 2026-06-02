@@ -1,9 +1,5 @@
 package baraja;
 
-/**
- *
- * @author Mariano_Chirino
- */
 public class Carta {
     private int numero;
     private String palo;
