@@ -7,9 +7,11 @@ import java.util.Collections;
 public class Baraja {
 
     private ArrayList<Carta> misCartas;
+    private ArrayList<Carta> cartasRepartidas;
 
     public Baraja() {
         this.misCartas = new ArrayList<>();
+        this.cartasRepartidas = new ArrayList<>();
 
         // Llamamos al método interno para cargar las 40 cartas españolas
         this.cargarBaraja();
@@ -17,6 +19,14 @@ public class Baraja {
 
     public ArrayList<Carta> getCartas() {
         return this.misCartas;
+    }
+    
+    public ArrayList<Carta> getcartasRepartidas() {
+        
+        if (cartasRepartidas.isEmpty()){
+            System.out.println("No hay cartas repartidas");
+    }
+        return cartasRepartidas;
     }
 
     public int cantidadDisponibles() {
@@ -53,6 +63,9 @@ public class Baraja {
             return null;
         }
 
+        //Guadrdamos la carta a remover en el array de cartas repartidas
+        this.cartasRepartidas.add(misCartas.get(0));
+        
         // Removemos y devolvemos la primera carta de la lista (índice 0)
         return this.misCartas.remove(0);
     }
