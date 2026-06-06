@@ -1,10 +1,11 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>270</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Baraja
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Baraja
 --
 - misCartas: Carta[*]
 - cartasRepartidas: Carta[*]
 --
 + Baraja()
 + getCartas(): Carta[*]
++getCartasRepartidas(): Carta[*] 
 + cantidadDisponibles(): int
 - cargarBaraja(): void
 + barajar():void
@@ -12,7 +13,7 @@
 + consultarCantidadCartas(): int
 + repartirCartas(): int
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Carta
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Carta
 -
 - numero: int
 - palo: String
@@ -23,8 +24,9 @@
 + toString(): String
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>240</y><w>240</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>240</y><w>240</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 - misCartas
+- cartasRepartidas
 m1=1
 m2=*
 </panel_attributes><additional_attributes>30;20;10;20;220;20</additional_attributes></element></diagram>

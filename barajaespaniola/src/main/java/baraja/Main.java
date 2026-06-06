@@ -1,6 +1,7 @@
 package baraja;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
 

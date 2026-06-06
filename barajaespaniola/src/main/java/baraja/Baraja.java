@@ -20,6 +20,14 @@ public class Baraja {
     public ArrayList<Carta> getCartas() {
         return this.misCartas;
     }
+    
+    public ArrayList<Carta> getcartasRepartidas() {
+        
+        if (cartasRepartidas.isEmpty()){
+            System.out.println("No hay cartas repartidas");
+    }
+        return cartasRepartidas;
+    }
 
     public int cantidadDisponibles() {
         return this.misCartas.size();
@@ -55,6 +63,9 @@ public class Baraja {
             return null;
         }
 
+        //Guadrdamos la carta a remover en el array de cartas repartidas
+        this.cartasRepartidas.add(misCartas.get(0));
+        
         // Removemos y devolvemos la primera carta de la lista (índice 0)
         return this.misCartas.remove(0);
     }
