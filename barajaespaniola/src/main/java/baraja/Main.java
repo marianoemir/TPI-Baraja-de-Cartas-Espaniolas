@@ -1,6 +1,7 @@
 package baraja;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -15,6 +16,8 @@ public class Main {
             System.out.println("\n--- MENU BARAJA ESPANIOLA ---");
             System.out.println("1. Barajar");
             System.out.println("2. Mostrar siguiente carta disponible");
+            System.out.println("5. Mostrar las cartas que ya han sido repartidas");
+            System.out.println("6. Mostrar cartas disponibles");
             System.out.println("7. Salir del juego.");
             System.out.print("Seleccione una opcion: ");
 
@@ -34,7 +37,17 @@ public class Main {
                             System.out.println("La carta es: " + proxima);
                         }
                         break;
-                    
+                        
+                    case 5:
+                        ArrayList Cartas_Repartidas=baraja.getcartasRepartidas();
+                        Cartas_Repartidas.forEach(System.out::println);
+                        break;
+                        
+                    case 6:
+                        ArrayList Cartas_Disponibles=baraja.getCartas();
+                        Cartas_Disponibles.forEach(System.out::println);
+                        break;
+                        
                     case 7:
                         System.out.println("¡Gracias por jugar!.");
                         break;
