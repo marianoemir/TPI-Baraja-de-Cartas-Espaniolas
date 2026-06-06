@@ -16,8 +16,8 @@ public class Main {
             System.out.println("\n--- MENU BARAJA ESPANIOLA ---");
             System.out.println("1. Barajar");
             System.out.println("2. Mostrar siguiente carta disponible");
-            System.out.println("5. Mostrar las cartas que ya han sido repartidas");
-            System.out.println("6. Mostrar cartas disponibles");
+            System.out.println("3. Consultar la cantidad de cartas disponibles");
+            System.out.println("4. Repartir una cantidad determinada de cartas");
             System.out.println("7. Salir del juego.");
             System.out.print("Seleccione una opcion: ");
 
@@ -38,16 +38,24 @@ public class Main {
                         }
                         break;
                         
-                    case 5:
-                        ArrayList Cartas_Repartidas=baraja.getcartasRepartidas();
-                        Cartas_Repartidas.forEach(System.out::println);
+                    case 3:
+                        System.out.println("Hay "+baraja.consultarCantidadCartas()+" cartas disponibles!!");
                         break;
                         
-                    case 6:
-                        ArrayList Cartas_Disponibles=baraja.getCartas();
-                        Cartas_Disponibles.forEach(System.out::println);
-                        break;
+                    case 4:
                         
+                        System.out.println("Ingrese la cantidad de personas");
+                        int personas = leer.nextInt();
+                        System.out.println("Ingrese cuantas cartas dara por persona");
+                        int cantidadCartas = leer.nextInt();
+                        int hecho=baraja.repartirCartas(personas, cantidadCartas);
+                        if (hecho==0){
+                            
+                            System.out.println("Cartas Repartidas!!");
+                            
+                        }
+                        break;
+                    
                     case 7:
                         System.out.println("¡Gracias por jugar!.");
                         break;

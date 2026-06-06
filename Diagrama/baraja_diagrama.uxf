@@ -1,7 +1,8 @@
 <diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Baraja
 --
 - misCartas: Carta[*]
--CartasRepartidas: Carta[*]
+- cartasRepartidas: Carta[*]
+--
 + Baraja()
 + getCartas(): Carta[*]
 +getCartasRepartidas(): Carta[*] 
@@ -9,7 +10,8 @@
 - cargarBaraja(): void
 + barajar():void
 + siguienteCarta(): Carta
-
++ consultarCantidadCartas(): int
++ repartirCartas(): int
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Carta
 -
