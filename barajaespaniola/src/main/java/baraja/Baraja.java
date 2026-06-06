@@ -7,9 +7,11 @@ import java.util.Collections;
 public class Baraja {
 
     private ArrayList<Carta> misCartas;
+    private ArrayList<Carta> cartasRepartidas;
 
     public Baraja() {
         this.misCartas = new ArrayList<>();
+        this.cartasRepartidas=new ArrayList<>();
 
         // Llamamos al método interno para cargar las 40 cartas españolas
         this.cargarBaraja();
@@ -55,6 +57,37 @@ public class Baraja {
 
         // Removemos y devolvemos la primera carta de la lista (índice 0)
         return this.misCartas.remove(0);
+    }
+    
+    public int consultarCantidadCartas(){
+        
+        int cantidad=this.misCartas.size();
+        
+        return cantidad;
+        
+    }
+    
+    public int repartirCartas(int cantitadPersonas, int cantidadCartas ){
+        
+        //primero verificamos si hay cartas en la baraja
+        
+        int total = cantitadPersonas * cantidadCartas;
+
+        if(total > this.misCartas.size()){
+            System.out.println("No hay suficientes cartas.");
+            return -1;
+            }
+        
+        
+        for(int i = 0; i < total; i++){
+
+        Carta carta = this.misCartas.remove(0);
+        this.cartasRepartidas.add(carta);
+
+    }
+
+    return 0;
+        
     }
 
 }

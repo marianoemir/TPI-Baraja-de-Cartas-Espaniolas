@@ -15,6 +15,8 @@ public class Main {
             System.out.println("\n--- MENU BARAJA ESPANIOLA ---");
             System.out.println("1. Barajar");
             System.out.println("2. Mostrar siguiente carta disponible");
+            System.out.println("3. Consultar la cantidad de cartas disponibles");
+            System.out.println("4. Repartir una cantidad determinada de cartas");
             System.out.println("7. Salir del juego.");
             System.out.print("Seleccione una opcion: ");
 
@@ -32,6 +34,24 @@ public class Main {
                         Carta proxima = baraja.siguienteCarta();
                         if (proxima != null) {
                             System.out.println("La carta es: " + proxima);
+                        }
+                        break;
+                        
+                    case 3:
+                        System.out.println("Hay "+baraja.consultarCantidadCartas()+" cartas disponibles!!");
+                        break;
+                        
+                    case 4:
+                        
+                        System.out.println("Ingrese la cantidad de personas");
+                        int personas = leer.nextInt();
+                        System.out.println("Ingrese cuantas cartas dara por persona");
+                        int cantidadCartas = leer.nextInt();
+                        int hecho=baraja.repartirCartas(personas, cantidadCartas);
+                        if (hecho==0){
+                            
+                            System.out.println("Cartas Repartidas!!");
+                            
                         }
                         break;
                     
