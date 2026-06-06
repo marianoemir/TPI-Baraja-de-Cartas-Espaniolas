@@ -80,7 +80,8 @@ public class Baraja {
         
         
         for(int i = 0; i < total; i++){
-
+        
+        //removemos una carta de "misCartas" y la agregamos a cartasRepartidas
         Carta carta = this.misCartas.remove(0);
         this.cartasRepartidas.add(carta);
 
