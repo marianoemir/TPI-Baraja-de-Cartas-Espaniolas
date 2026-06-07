@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Baraja {
-
+    
+    // Cartas que todavía permanecen en la baraja
     private ArrayList<Carta> misCartas;
+    // Cartas que ya fueron repartidas
     private ArrayList<Carta> cartasRepartidas;
 
     public Baraja() {

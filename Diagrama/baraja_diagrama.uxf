@@ -1,19 +1,19 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Baraja
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>220</x><y>160</y><w>220</w><h>230</h></coordinates><panel_attributes>Baraja
 --
 - misCartas: Carta[*]
 - cartasRepartidas: Carta[*]
 --
-+ Baraja()
-+ getCartas(): Carta[*]
-+getCartasRepartidas(): Carta[*] 
-+ cantidadDisponibles(): int
-- cargarBaraja(): void
-+ barajar():void
-+ siguienteCarta(): Carta
-+ consultarCantidadCartas(): int
-+ repartirCartas(): int
++ Baraja()                           
++ getCartas() : ArrayList&lt;Carta&gt;     
++ getCartasRepartidas():ArrayList&lt;Carta&gt; 
++ cantidadDisponibles() : int        
+- cargarBaraja() : void              
++ barajar() : void                   
++ siguienteCarta() : Carta           
++ consultarCantidadCartas() : int    
++ repartirCartas(int,int) : int 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>140</y><w>220</w><h>230</h></coordinates><panel_attributes>Carta
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>160</y><w>220</w><h>230</h></coordinates><panel_attributes>Carta
 -
 - numero: int
 - palo: String
@@ -24,7 +24,7 @@
 + toString(): String
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>240</y><w>240</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>260</y><w>240</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 - misCartas
 - cartasRepartidas
 m1=1

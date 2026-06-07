@@ -1,5 +1,5 @@
 package baraja;
-
+// Representa una carta individual de la baraja española
 public class Carta {
     private int numero;
     private String palo;
