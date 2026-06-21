@@ -16,7 +16,7 @@ public class Jugador {
 
     public Carta sacarCarta(int indice) {
         if (indice < 0 || indice >= this.mano.size()) {
-            System.out.println("El indice ingresado no es válido.");
+            System.out.println("El indice ingresado no es valido.");
             return null;
         }
         return this.mano.remove(indice);
@@ -24,7 +24,7 @@ public class Jugador {
 
     public Carta obtenerCarta(int indice) {
         if (indice < 0 || indice >= this.mano.size()) {
-            System.out.println("El indice ingresado no es válido.");
+            System.out.println("El indice ingresado no es valido.");
             return null;
         }
         return this.mano.get(indice);
@@ -33,7 +33,7 @@ public class Jugador {
     public Carta sacarCartaObjeto(Carta carta) {
         int indice = this.mano.indexOf(carta);
         if (indice == -1) {
-            System.out.println("La carta no está en la mano.");
+            System.out.println("La carta no esta en la mano.");
             return null;
         }
         return this.mano.remove(indice);

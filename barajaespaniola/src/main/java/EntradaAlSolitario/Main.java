@@ -16,7 +16,7 @@ public class Main {
         boolean seguirJugando = true;
 
         System.out.println("=================================");
-        System.out.println("      SOLITARIO ESPAÑOL");
+        System.out.println("      SOLITARIO ESPANIOL POR DESCARTE. ");
         System.out.println("=================================");
 
         while (seguirJugando) {
@@ -45,7 +45,7 @@ public class Main {
             menu.mostrarResultado(resultado);
         }
 
-        System.out.println("\n¡Gracias por jugar! Hasta pronto.");
+        System.out.println("\nGracias por jugar! Hasta pronto.");
         scanner.close();
     }
 
@@ -53,19 +53,19 @@ public class Main {
         int opcion = -1;
 
         while (opcion < 1 || opcion > 3) {
-            System.out.println("\n--------- MENÚ PRINCIPAL ---------");
-            System.out.println("1) Jugar Modo Clásico");
-            System.out.println("2) Jugar Modo Difícil");
+            System.out.println("\n--------- MENU PRINCIPAL ---------");
+            System.out.println("1) Jugar Modo Clasico");
+            System.out.println("2) Jugar Modo Dificil");
             System.out.println("3) Salir");
-            System.out.print("Elegí una opción: ");
+            System.out.print("Elegi una opcion: ");
 
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
                 if (opcion < 1 || opcion > 3) {
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opcion invalida.");
                 }
             } else {
-                System.out.println("Debes ingresar un número.");
+                System.out.println("Debes ingresar un numero.");
                 scanner.next();
             }
         }

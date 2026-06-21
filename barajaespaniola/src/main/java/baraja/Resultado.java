@@ -17,7 +17,7 @@ public class Resultado {
     public void registrarVictoria() {
         this.terminado = true;
         this.ganador = true;
-        this.motivo = "¡Ganaste la partida!";
+        this.motivo = "Ganaste la partida!";
         victorias++;
     }
 
@@ -39,15 +39,15 @@ public class Resultado {
     public String getMensaje() {
         return motivo;
     }
-    
+
     public int obtenerVictorias() {
         return victorias;
     }
-    
+
     public int obtenerDerrotas() {
         return derrotas;
     }
-    
+
     public static void reiniciarEstadisticas() {
         victorias = 0;
         derrotas = 0;

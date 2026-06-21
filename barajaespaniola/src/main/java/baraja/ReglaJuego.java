@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class ReglaJuego {
 
-public static final int LIMITE_MESA = 10;      
-public static final int VIDAS_INICIALES = 6;    
+    public static final int LIMITE_MESA = 10;
+    public static final int VIDAS_INICIALES = 6;
 
     private boolean modoDificil;
     private int vidas;
@@ -28,8 +28,8 @@ public static final int VIDAS_INICIALES = 6;
         return modoDificil && mesa.cantidad() >= LIMITE_MESA;
     }
 
-    // Modo difícil: pareja = mismo número Y mismo grupo de palo
-    // (más restrictivo que el modo clásico, pero sigue siendo posible)
+    // Modo dificil: pareja = mismo numero Y mismo grupo de palo
+    // (mas restrictivo que el modo clasico, pero sigue siendo posible)
     private boolean mismoGrupo(String palo1, String palo2) {
         boolean esGrupoA1 = palo1.equals("Oros") || palo1.equals("Copas");
         boolean esGrupoA2 = palo2.equals("Oros") || palo2.equals("Copas");
@@ -65,7 +65,7 @@ public static final int VIDAS_INICIALES = 6;
             return false;
         }
 
-        // Si la mano está vacía pero la mesa no, no hay nada más que jugar: también es derrota.
+        // Si la mano esta vacia pero la mesa no, no hay nada mas que jugar: tambien es derrota.
         if (jugador.manoVacia() && !mesa.estaVacia()) {
             return true;
         }

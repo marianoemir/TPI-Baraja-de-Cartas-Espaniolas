@@ -13,10 +13,10 @@ public class Mesa {
     public void agregarCarta(Carta carta) {
         this.cartas.add(carta);
     }
-    
+
     public void agregarCartaEnPosicion(Carta carta, int posicion) {
         if (posicion < 0 || posicion > this.cartas.size()) {
-            System.out.println("Posición inválida. Se agrega al final.");
+            System.out.println("Posicion invalida. Se agrega al final.");
             this.cartas.add(carta);
         } else {
             this.cartas.add(posicion, carta);
@@ -31,7 +31,7 @@ public class Mesa {
         }
         return null;
     }
-    
+
     public ArrayList<Carta> buscarTodasLasParejasde(int numero) {
         ArrayList<Carta> parejas = new ArrayList<>();
         for (Carta carta : this.cartas) {
@@ -53,18 +53,18 @@ public class Mesa {
     public ArrayList<Carta> getCartas() {
         return this.cartas;
     }
-    
+
     public int cantidad() {
         return this.cartas.size();
     }
 
     public void mostrarCartas() {
         System.out.println("Mesa:");
-        
+
         for (int i = 0; i < this.cartas.size(); i++) {
             System.out.print(" [" + i + "] " + this.cartas.get(i) + " ");
         }
-        
+
         System.out.println();
     }
 }

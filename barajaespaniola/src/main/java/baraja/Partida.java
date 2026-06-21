@@ -24,7 +24,7 @@ public class Partida {
     public void inicializar() {
         baraja.barajar();
 
-        int cartasIniciales = reglas.esModoDificil() ? 3 : 3;   
+        int cartasIniciales = reglas.esModoDificil() ? 3 : 3;
 
         for (int i = 0; i < cartasIniciales; i++) {
             jugador.agregarCarta(baraja.siguienteCarta());
@@ -35,12 +35,12 @@ public class Partida {
         }
 
         if (reglas.esModoDificil()) {
-            System.out.println("\n*** MODO DIFÍCIL ACTIVADO: mesa límite "
+            System.out.println("\n*** MODO DIFICIL ACTIVADO: mesa limite "
                     + ReglaJuego.LIMITE_MESA + " cartas, vidas: " + reglas.getVidas()
                     + ", mano reducida a " + cartasIniciales + " cartas ***");
-            System.out.println("*** Nota: Si te pasás de las " + ReglaJuego.LIMITE_MESA
-                    + " cartas, la última carta que intentaste poner vuelve al mazo, "
-                    + "perdés una vida y toda la mesa se renueva con cartas nuevas del mazo ***");
+            System.out.println("*** Nota: Si te pasas de las " + ReglaJuego.LIMITE_MESA
+                    + " cartas, la ultima carta que intentaste poner vuelve al mazo, "
+                    + "perdes una vida y toda la mesa se renueva con cartas nuevas del mazo ***");
         }
     }
 
@@ -99,7 +99,7 @@ public class Partida {
             Carta parejaElegida = elegirParejaDeMesa(parejasMesa);
             jugador.sacarCarta(indiceCartaJugador);
             mesa.removerCarta(parejaElegida);
-            System.out.println("✓ ¡PAREJA ENCONTRADA! Se eliminan: " + parejaElegida + " y " + cartaJugada);
+            System.out.println("[OK] PAREJA ENCONTRADA! Se eliminan: " + parejaElegida + " y " + cartaJugada);
             robarDelBaraja();
 
         } else {
@@ -108,7 +108,7 @@ public class Partida {
             if (parejaMano != null) {
                 jugador.sacarCarta(indiceCartaJugador);
                 jugador.sacarCartaObjeto(parejaMano);
-                System.out.println("✓ ¡PAREJA EN MANO! Se eliminan: " + cartaJugada + " y " + parejaMano);
+                System.out.println("[OK] PAREJA EN MANO! Se eliminan: " + cartaJugada + " y " + parejaMano);
                 robarDelBaraja();
                 robarDelBaraja();
 
@@ -119,7 +119,7 @@ public class Partida {
                     baraja.agregarAlFondo(cartaJugada);
                     boolean sinVidas = reglas.perderVida();
 
-                    System.out.println("⚠ La mesa está llena (" + mesa.cantidad()
+                    System.out.println("[!] La mesa esta llena (" + mesa.cantidad()
                             + "/" + ReglaJuego.LIMITE_MESA + "). La carta " + cartaJugada
                             + " vuelve al fondo del mazo. Perdiste una vida. Vidas restantes: "
                             + reglas.getVidas());
@@ -167,7 +167,7 @@ public class Partida {
             jugador.agregarCarta(robada);
             System.out.println("Robaste: " + robada);
         } else {
-            System.out.println("No hay más cartas en la baraja.");
+            System.out.println("No hay mas cartas en la baraja.");
         }
     }
 
@@ -193,16 +193,16 @@ public class Partida {
             mesa.agregarCarta(nueva);
         }
 
-        // Las cartas viejas vuelven al fondo del mazo para poder reaparecer después
+        // Las cartas viejas vuelven al fondo del mazo para poder reaparecer despues
         for (Carta vieja : cartasViejas) {
             baraja.agregarAlFondo(vieja);
         }
 
-        // Si no había suficientes cartas en el mazo para reemplazar todo, las que sobraron quedan en mesa
+        // Si no habia suficientes cartas en el mazo para reemplazar todo, las que sobraron quedan en mesa
         for (int i = cantidadAReemplazar; i < cartasViejas.size(); i++) {
             mesa.agregarCarta(cartasViejas.get(i));
         }
 
-        System.out.println("🔄 ¡La mesa se renueva por completo! Entran " + cantidadAReemplazar + " cartas nuevas del mazo.");
+        System.out.println("[REFRESH] La mesa se renueva por completo! Entran " + cantidadAReemplazar + " cartas nuevas del mazo.");
     }
 }
