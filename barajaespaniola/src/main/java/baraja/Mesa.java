@@ -1,45 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package baraja;
+
 import java.util.ArrayList;
-/**
- *
- * @author FACUNDO
- */
 
 public class Mesa {
 
     private ArrayList<Carta> cartas;
 
-    
     public Mesa() {
-        
         this.cartas = new ArrayList<>();
     }
 
-    
-    public void agregarCarta(Carta carta) { // agrega una carta al final de la fila
+    public void agregarCarta(Carta carta) {
         this.cartas.add(carta);
     }
+    
+    public void agregarCartaEnPosicion(Carta carta, int posicion) {
+        if (posicion < 0 || posicion > this.cartas.size()) {
+            System.out.println("Posición inválida. Se agrega al final.");
+            this.cartas.add(carta);
+        } else {
+            this.cartas.add(posicion, carta);
+        }
+    }
 
-
-    public Carta buscarPorNumero(int numero) { // busca en la mesa una carta con el mismo numero
-        
+    public Carta buscarPorNumero(int numero) {
         for (Carta carta : this.cartas) {
             if (carta.getNumero() == numero) {
                 return carta;
             }
         }
-        
         return null;
     }
+    
+    public ArrayList<Carta> buscarTodasLasParejasde(int numero) {
+        ArrayList<Carta> parejas = new ArrayList<>();
+        for (Carta carta : this.cartas) {
+            if (carta.getNumero() == numero) {
+                parejas.add(carta);
+            }
+        }
+        return parejas;
+    }
 
-
-    public void removerCarta(Carta carta) { // remueve una carta especifica de la mesa
+    public void removerCarta(Carta carta) {
         this.cartas.remove(carta);
-        
     }
 
     public boolean estaVacia() {
@@ -49,13 +53,16 @@ public class Mesa {
     public ArrayList<Carta> getCartas() {
         return this.cartas;
     }
+    
+    public int cantidad() {
+        return this.cartas.size();
+    }
 
     public void mostrarCartas() {
-        
         System.out.println("Mesa:");
         
-        for (Carta carta : this.cartas) {
-            System.out.print(" [" + carta + "] ");
+        for (int i = 0; i < this.cartas.size(); i++) {
+            System.out.print(" [" + i + "] " + this.cartas.get(i) + " ");
         }
         
         System.out.println();

@@ -1,36 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package baraja;
 
-/**
- *
- * @author FACUNDO
- */
+import java.util.ArrayList;
 
 public class ReglaJuego {
 
-
-    public boolean esPareja(Carta carta1, Carta carta2) {  // dos cartas forman pareja si tienen el mísmo número (el palo no importa)
+    public boolean esPareja(Carta carta1, Carta carta2) {
         return carta1.getNumero() == carta2.getNumero();
     }
 
-
-    public boolean Victoria(Jugador jugador, Mesa mesa, Baraja baraja) { //para que un jugador gane deben cuplirse los 3 requisitos que figuran dentro de este metodo.
-        
-        boolean barajaVacia = baraja.cantidadDisponibles() == 0; // no deben quedar cartas en la baraja
-        boolean manoVacia = jugador.manoVacia();// el jugador no debe tener mas cartas
-        boolean mesaVacia = mesa.estaVacia();// no quedan mas cartas en la masea
-        
-        return barajaVacia && manoVacia && mesaVacia;
+    public boolean Victoria(Jugador jugador, Mesa mesa, Baraja baraja) {
+        return jugador.manoVacia()
+            && mesa.estaVacia()
+            && baraja.cantidadDisponibles() == 0;
     }
 
-    public boolean Derrota(Jugador jugador, Baraja baraja) {//el jugador pierde cuando se cumplen las siguentes condiciones
-        
-        boolean barajaVacia = baraja.cantidadDisponibles() == 0; //ya no puede sacar mas cartas de la baraja
-        boolean jugadorConCartas = !jugador.manoVacia(); // todavia tiene cartas en la mano que no puede eliminar (por la primera condición)
-        
-        return barajaVacia && jugadorConCartas;
+    public boolean Derrota(Jugador jugador, Mesa mesa, Baraja baraja) {
+        boolean barajaVacia = baraja.cantidadDisponibles() == 0;
+        boolean hayJugadasPosibles = existePareja(jugador, mesa);
+        return barajaVacia && !hayJugadasPosibles && !jugador.manoVacia();
+    }
+
+    private boolean existePareja(Jugador jugador, Mesa mesa) {
+        ArrayList<Carta> mano = jugador.getMano();
+
+        // Buscar pareja entre mano y mesa
+        for (Carta cartaMano : mano) {
+            if (mesa.buscarPorNumero(cartaMano.getNumero()) != null) {
+                return true;
+            }
+        }
+
+        // Buscar pareja dentro de la propia mano
+        for (int i = 0; i < mano.size(); i++) {
+            for (int j = i + 1; j < mano.size(); j++) {
+                if (mano.get(i).getNumero() == mano.get(j).getNumero()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
