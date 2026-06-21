@@ -4,8 +4,52 @@ import java.util.ArrayList;
 
 public class ReglaJuego {
 
-    public boolean esPareja(Carta carta1, Carta carta2) {
-        return carta1.getNumero() == carta2.getNumero();
+public static final int LIMITE_MESA = 10;      
+public static final int VIDAS_INICIALES = 6;    
+
+    private boolean modoDificil;
+    private int vidas;
+
+    public ReglaJuego() {
+        this.modoDificil = false;
+        this.vidas = VIDAS_INICIALES;
+    }
+
+    public ReglaJuego(boolean modoDificil) {
+        this.modoDificil = modoDificil;
+        this.vidas = VIDAS_INICIALES;
+    }
+
+    public boolean esModoDificil() {
+        return modoDificil;
+    }
+
+    public boolean mesaLlena(Mesa mesa) {
+        return modoDificil && mesa.cantidad() >= LIMITE_MESA;
+    }
+
+    // Modo difícil: pareja = mismo número Y mismo grupo de palo
+    // (más restrictivo que el modo clásico, pero sigue siendo posible)
+    private boolean mismoGrupo(String palo1, String palo2) {
+        boolean esGrupoA1 = palo1.equals("Oros") || palo1.equals("Copas");
+        boolean esGrupoA2 = palo2.equals("Oros") || palo2.equals("Copas");
+        return esGrupoA1 == esGrupoA2;
+    }
+
+    public boolean sonPareja(Carta a, Carta b) {
+        if (modoDificil) {
+            return a.getNumero() == b.getNumero() && mismoGrupo(a.getPalo(), b.getPalo());
+        }
+        return a.getNumero() == b.getNumero();
+    }
+
+    public boolean perderVida() {
+        vidas--;
+        return vidas <= 0;
+    }
+
+    public int getVidas() {
+        return vidas;
     }
 
     public boolean Victoria(Jugador jugador, Mesa mesa, Baraja baraja) {
@@ -16,24 +60,34 @@ public class ReglaJuego {
 
     public boolean Derrota(Jugador jugador, Mesa mesa, Baraja baraja) {
         boolean barajaVacia = baraja.cantidadDisponibles() == 0;
+
+        if (!barajaVacia) {
+            return false;
+        }
+
+        // Si la mano está vacía pero la mesa no, no hay nada más que jugar: también es derrota.
+        if (jugador.manoVacia() && !mesa.estaVacia()) {
+            return true;
+        }
+
         boolean hayJugadasPosibles = existePareja(jugador, mesa);
-        return barajaVacia && !hayJugadasPosibles && !jugador.manoVacia();
+        return !hayJugadasPosibles && !jugador.manoVacia();
     }
 
     private boolean existePareja(Jugador jugador, Mesa mesa) {
         ArrayList<Carta> mano = jugador.getMano();
 
-        // Buscar pareja entre mano y mesa
         for (Carta cartaMano : mano) {
-            if (mesa.buscarPorNumero(cartaMano.getNumero()) != null) {
-                return true;
+            for (Carta cartaMesa : mesa.getCartas()) {
+                if (sonPareja(cartaMano, cartaMesa)) {
+                    return true;
+                }
             }
         }
 
-        // Buscar pareja dentro de la propia mano
         for (int i = 0; i < mano.size(); i++) {
             for (int j = i + 1; j < mano.size(); j++) {
-                if (mano.get(i).getNumero() == mano.get(j).getNumero()) {
+                if (sonPareja(mano.get(i), mano.get(j))) {
                     return true;
                 }
             }

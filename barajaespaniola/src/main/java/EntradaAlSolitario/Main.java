@@ -13,13 +13,27 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean jugarDeNuevo = true;
-        
-        while (jugarDeNuevo) {
+        boolean seguirJugando = true;
+
+        System.out.println("=================================");
+        System.out.println("      SOLITARIO ESPAÑOL");
+        System.out.println("=================================");
+
+        while (seguirJugando) {
+
+            int opcion = mostrarMenuPrincipal(scanner);
+
+            if (opcion == 3) {
+                seguirJugando = false;
+                continue;
+            }
+
+            boolean modoDificil = (opcion == 2);
+
             Baraja baraja = new Baraja();
             Jugador jugador = new Jugador();
             Mesa mesa = new Mesa();
-            ReglaJuego reglas = new ReglaJuego();
+            ReglaJuego reglas = new ReglaJuego(modoDificil);
             Resultado resultado = new Resultado();
             MenuConsola menu = new MenuConsola();
 
@@ -29,13 +43,33 @@ public class Main {
             partida.jugar();
 
             menu.mostrarResultado(resultado);
-            
-            System.out.print("\n¿Deseas jugar de nuevo? (S/N): ");
-            String respuesta = scanner.next().toUpperCase();
-            jugarDeNuevo = respuesta.equals("S");
         }
-        
+
         System.out.println("\n¡Gracias por jugar! Hasta pronto.");
         scanner.close();
+    }
+
+    private static int mostrarMenuPrincipal(Scanner scanner) {
+        int opcion = -1;
+
+        while (opcion < 1 || opcion > 3) {
+            System.out.println("\n--------- MENÚ PRINCIPAL ---------");
+            System.out.println("1) Jugar Modo Clásico");
+            System.out.println("2) Jugar Modo Difícil");
+            System.out.println("3) Salir");
+            System.out.print("Elegí una opción: ");
+
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt();
+                if (opcion < 1 || opcion > 3) {
+                    System.out.println("Opción inválida.");
+                }
+            } else {
+                System.out.println("Debes ingresar un número.");
+                scanner.next();
+            }
+        }
+
+        return opcion;
     }
 }
