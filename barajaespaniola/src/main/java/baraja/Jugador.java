@@ -8,6 +8,9 @@ import java.util.ArrayList;
  *
  * @author FACUNDO
  */
+//Imports Andres
+ 
+import baraja.Carta;
 
 public class Jugador {
 
